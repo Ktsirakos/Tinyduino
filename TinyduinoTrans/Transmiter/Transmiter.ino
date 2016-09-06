@@ -1,12 +1,11 @@
-
-#include <RHGenericSPI.h>
-#include <RH_RF22.h>
-#include <RHDatagram.h>
-#include <RHGenericDriver.h>
-#include <RadioHead.h>
-#include <RHReliableDatagram.h>
-#include <RHSPIDriver.h>
-#include <RHHardwareSPI.h>
+#include "RHGenericSPI.h"
+#include "RH_RF22.h"
+#include "RHDatagram.h"
+#include "RHGenericDriver.h"
+#include "RadioHead.h"
+#include "RHReliableDatagram.h"
+#include "RHSPIDriver.h"
+#include "RHHardwareSPI.h"
 #include <Wire.h>
 #include "BMA250.h"
 
@@ -30,12 +29,23 @@ void setup() {
   timestamp = millis();
 }
 
+void printOutput(int x , int y , int z){
+  Serial.print("X: ");
+  Serial.print(x);
+  Serial.print("\t");
+  Serial.print("Y: ");
+  Serial.print(y);
+  Serial.print("\t");
+  Serial.print("Z: ");
+  Serial.println(z);
+}
 void loop() {
   
   accel.read();                                          //This function gets new data from the accelerometer
   //int angle = atan2(accel.Y, accel.X) * 180.0/PI;      //math to calculate the angle from the sensor readings
-  //angle = constrain(angle-90.0,-90.0,90.0);              //We only want angles from -90 to 90
-  Serial.println(accel.X);
+  //angle = constrain(angle-90.0,-90.0,90.0);
+  //We only want angles from -90 to 90
+  printOutput(accel.X , accel.Y , accel.Z);
   
   timestampfuture = millis();
   if(timestampfuture - timestamp < 1000) i++;
