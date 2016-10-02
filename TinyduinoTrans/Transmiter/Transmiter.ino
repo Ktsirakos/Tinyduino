@@ -30,13 +30,10 @@ void setup() {
 }
 
 void printOutput(int x , int y , int z){
-  Serial.print("X: ");
   Serial.print(x);
-  Serial.print("\t");
-  Serial.print("Y: ");
+  Serial.print(" ");
   Serial.print(y);
-  Serial.print("\t");
-  Serial.print("Z: ");
+  Serial.print(" ");
   Serial.println(z);
 }
 void loop() {
@@ -47,13 +44,13 @@ void loop() {
   //We only want angles from -90 to 90
   printOutput(accel.X , accel.Y , accel.Z);
   
-  timestampfuture = millis();
-  if(timestampfuture - timestamp < 1000) i++;
-  else{
-        Serial.println(i);
-        i = 0;
-        timestamp = millis();
-        }
+//  timestampfuture = millis();
+//  if(timestampfuture - timestamp < 1000) i++;
+//  else{
+//        Serial.println(i);
+//        i = 0;
+//        timestamp = millis();
+//        }
   
   //seg.printInt(abs(angle));
   //uint8_t data[RH_RF22_MAX_MESSAGE_LEN];
